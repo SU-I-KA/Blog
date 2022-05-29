@@ -36,6 +36,7 @@ const SinglePostPage = () => {
             <h3
               style={{
                 textAlign: 'center',
+                paddingBottom: '60px',
               }}
             >
               {error}
