@@ -30,39 +30,51 @@ const SinglePostPage = () => {
   return (
     <main>
       <Hero />
-      {error && <div>{error}</div>}
       <section className='single-post-wrapper'>
+        {error && (
+          <article>
+            <h3
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              {error}
+            </h3>
+          </article>
+        )}
         {isPending ? (
           <SinglePostLoading />
         ) : (
-          <article>
-            <img src={imgUrl} alt={title} className='main-img' />
-            <div className='post-info'>
-              <span className='single-post-category'>{category}</span>
-              <h2 className='single-post-title'>{title}</h2>
-              <p className='single-post-date'>{formatDate(date)}</p>
-              <div className='underline'></div>
-            </div>
-            <p
-              style={{
-                marginBottom: '3rem',
-              }}
-            >
-              {body}
-            </p>
-            <div className='btn-flex'>
-              <Link className='btn center-btn' to={`/posts/edit/${id}`}>
-                edit
-              </Link>
-              <button
-                className='btn center-btn'
-                onClick={() => handleDelete(id)}
+          !error && (
+            <article>
+              <img src={imgUrl} alt={title} className='main-img' />
+              <div className='post-info'>
+                <span className='single-post-category'>{category}</span>
+                <h2 className='single-post-title'>{title}</h2>
+                <p className='single-post-date'>{formatDate(date)}</p>
+                <div className='underline'></div>
+              </div>
+              <p
+                style={{
+                  marginBottom: '3rem',
+                }}
               >
-                delete
-              </button>
-            </div>
-            <Comments />
-          </article>
+                {body}
+              </p>
+              <div className='btn-flex'>
+                <Link className='btn center-btn' to={`/posts/edit/${id}`}>
+                  edit
+                </Link>
+                <button
+                  className='btn center-btn'
+                  onClick={() => handleDelete(id)}
+                >
+                  delete
+                </button>
+              </div>
+              <Comments />
+            </article>
+          )
         )}
 
         {/* banner component */}
