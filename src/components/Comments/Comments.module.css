@@ -183,7 +183,6 @@ button.btn__post[disabled] {
   text-transform: capitalize;
   font-family: 'Poppins', sans-serif;
 }
-
 .btn__del {
   background-color: transparent;
   border: 0;
@@ -196,9 +195,21 @@ button.btn__post[disabled] {
   transition: var(--transition);
   margin-left: 12px;
 }
-
 .btn__del:hover {
   text-decoration: underline;
+}
+.smallIcon {
+  margin-right: 0.35em;
+  width: 13px;
+  max-height: 13px;
+  min-height: 1.2em;
+  display: inline-block;
+  pointer-events: none;
+  vertical-align: bottom;
+  fill: hsl(225deg 10% 8%);
+}
+.btn__del:hover .smallIcon {
+  fill: hsl(245deg 62% 45%) !important;
 }
 
 /*
@@ -219,7 +230,8 @@ POPUP COMMENT EDIT FORM
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
   transition: opacity 0.3s 0s, visibility 0s 0s;
-  z-index: 10;
+  z-index: 15;
+  padding: 0 6px;
 }
 .modalbody {
   max-width: 500px;
@@ -266,13 +278,24 @@ MEDIA QUERIES
 ===============
 */
 
-@media screen and (max-width: 425px) {
-  .comments {
-    padding: 40px 20px !important;
-  }
+@media screen and (max-width: 430px) {
   .user__img {
-    height: 40px;
-    width: 40px;
-    line-height: 40px;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+  }
+  .section__title h1 {
+    font-size: 30px;
+  }
+  .comment__text h2,
+  .comment__title {
+    font-size: 22px;
+  }
+  .user__name {
+    font-size: 13px;
+  }
+  .msg {
+    font-size: 12px;
+    line-height: 20px;
   }
 }

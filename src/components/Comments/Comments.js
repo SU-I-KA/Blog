@@ -6,6 +6,10 @@ import CommentsLoading from '../Loading/CommentsLoading'
 
 import { useParams } from 'react-router-dom'
 
+import { useMediaQuery } from 'react-responsive'
+import DeleteIcon from '../DeleteIcon/DeleteIcon'
+import PenIcon from '../PenIcon/PenIcon'
+
 function Comments() {
   const { id } = useParams()
   const [comments, setComments] = useState([])
@@ -17,6 +21,8 @@ function Comments() {
   const [msg, setMsg] = useState('')
 
   const notValidToPost = (user.length > 0) & (msg.length > 0) ? false : true
+
+  const isMobile = useMediaQuery({ query: '(max-width: 430px)' })
 
   const sortCommentsByDate = (a, b) => {
     return new Date(a.date) - new Date(b.date)
@@ -37,12 +43,12 @@ function Comments() {
   }, [id])
 
   // delete a comment
-  const deleteComment = async (e, commentId) => {
+  const deleteComment = async (commentId) => {
     // const currentCommentNode =
     //   e.target.parentNode.parentNode.parentNode.parentNode.parentNode
     // currentCommentNode.classList.add('mystyle')
     // console.log(currentCommentNode)
-    console.log(e.target)
+    // console.log(e.target)
     try {
       await axios.delete(`/posts/${id}/comments/${commentId}`)
       const newComments = comments.filter((comment) => comment.id !== commentId)
@@ -213,20 +219,33 @@ function Comments() {
                           </div>
                         </div>
                         <div className={styles.col__9}>
-                          <div className='row space-between'>
+                          <div
+                            className='row space-between'
+                            style={{
+                              position: 'relative',
+                            }}
+                          >
                             <div className={styles.user__name}>{username}</div>
                             <div className={styles.comment__btns}>
                               <button
                                 className={styles.btn__del}
                                 onClick={() => editComment(comment)}
                               >
-                                edit
+                                {isMobile ? (
+                                  <PenIcon className={styles.smallIcon} />
+                                ) : (
+                                  'edit'
+                                )}
                               </button>
                               <button
                                 className={styles.btn__del}
-                                onClick={(e) => deleteComment(e, id)}
+                                onClick={() => deleteComment(id)}
                               >
-                                delete
+                                {isMobile ? (
+                                  <DeleteIcon className={styles.smallIcon} />
+                                ) : (
+                                  'delete'
+                                )}
                               </button>
                             </div>
                           </div>

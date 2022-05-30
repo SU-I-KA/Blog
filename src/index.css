@@ -839,6 +839,17 @@ button.btn-post[disabled] {
   color: #fff;
   cursor: pointer;
 }
+@media screen and (max-width: 430px) {
+  .section-title h1 {
+    font-size: 28px !important;
+  }
+  .post-text h2 {
+    font-size: 22px !important;
+  }
+  .post-text p {
+    font-size: 14px !important;
+  }
+}
 
 /*
 ===============

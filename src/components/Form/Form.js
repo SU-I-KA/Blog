@@ -181,8 +181,8 @@ const Form = () => {
                     />
                   </div>
                 </div>
-                <div className='row'>
-                  {!editMode ? (
+                {!editMode ? (
+                  <div className='row'>
                     <button
                       className='btn-post'
                       disabled={notValidToPost}
@@ -190,17 +190,17 @@ const Form = () => {
                     >
                       publish
                     </button>
-                  ) : (
-                    <div className='btn-flex'>
-                      <button className='btn center-btn' onClick={handleCancel}>
-                        cancel
-                      </button>
-                      <button className='btn center-btn' onClick={handleSave}>
-                        save
-                      </button>
-                    </div>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <div className='btn-flex'>
+                    <button className='btn center-btn' onClick={handleCancel}>
+                      cancel
+                    </button>
+                    <button className='btn center-btn' onClick={handleSave}>
+                      save
+                    </button>
+                  </div>
+                )}
               </form>
             </div>
           </div>
