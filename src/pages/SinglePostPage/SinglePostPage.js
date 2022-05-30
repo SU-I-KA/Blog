@@ -10,6 +10,9 @@ import useFetch from '../../Hooks/useFetch'
 import axios from '../../axios/axios'
 import { formatDate } from '../../utils/formatDate'
 
+import parse from 'html-react-parser'
+import './editor.css'
+
 const SinglePostPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -55,13 +58,14 @@ const SinglePostPage = () => {
                 <p className='single-post-date'>{formatDate(date)}</p>
                 <div className='underline'></div>
               </div>
-              <p
+              <div
+                className='ck-content'
                 style={{
                   marginBottom: '3rem',
                 }}
               >
-                {body}
-              </p>
+                {parse(body)}
+              </div>
               <div className='btn-flex'>
                 <Link className='btn center-btn' to={`/posts/edit/${id}`}>
                   edit

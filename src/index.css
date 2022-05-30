@@ -936,3 +936,13 @@ Footer
   text-transform: uppercase;
   letter-spacing: var(--spacing);
 }
+
+/* ckEditor styles*/
+.ck.ck-reset.ck-editor.ck-rounded-corners {
+  max-width: 99.7% !important;
+  margin-bottom: 2rem;
+}
+.ck.ck-editor__main,
+.ck.ck-content.ck-editor__editable.ck-rounded-corners {
+  min-height: 300px !important;
+}

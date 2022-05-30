@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 // import Editor from '../SlateEditor/Editor'
-
 import axios from '../../axios/axios'
 
 import DropDownMenu from '../DropDownMenu/DropDownMenu'
+import ReactCkEditor from '../Editor/Editor'
 
 const Form = () => {
   const { id } = useParams()
@@ -172,13 +172,14 @@ const Form = () => {
                 <div className='row'>
                   <div className='col-12'>
                     {/* <Editor /> */}
-                    <textarea
+                    <ReactCkEditor body={body} setBody={setBody} />
+                    {/* <textarea
                       className='post-form-control'
                       name='body'
                       value={body}
                       placeholder='Content for your post...'
                       onChange={(e) => setBody(e.target.value)}
-                    />
+                    /> */}
                   </div>
                 </div>
                 {!editMode ? (

@@ -5,6 +5,7 @@ import { IoMdArrowRoundForward } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
 import { formatDate } from '../../utils/formatDate'
+import { excerpt } from '../../utils/excerpt'
 
 const Post = (props) => {
   const { title, imgUrl, id, date, category, body, author } = props
@@ -15,7 +16,7 @@ const Post = (props) => {
         <span className='category'>{category}</span>
         <h3 className='post-head'>{title}</h3>
         <div className='underline'></div>
-        <p>{`${body.substring(0, 150)} ... `}</p>
+        <p>{`${excerpt(body)} ... `}</p>
         <Link to={`/posts/${id}`} className='link'>
           Continue Reading <IoMdArrowRoundForward />
         </Link>
